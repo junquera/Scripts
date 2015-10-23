@@ -12,13 +12,14 @@ def main():
 		serverName = raw_input("Introduzca la dirección a escanear: ")
 	
 	for i in range(99999):
+                clientSocket = socket(AF_INET, SOCK_STREAM)
 		try:
 			serverPort = i
-			clientSocket = socket(AF_INET, SOCK_STREAM)
 			clientSocket.connect((serverName, serverPort))
 			print i
 			clientSocket.close()
 		except:
+			clientSocket.close()
 			continue
 
 if __name__ == "__main__":
